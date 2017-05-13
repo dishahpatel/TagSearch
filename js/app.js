@@ -33,7 +33,7 @@ Instagram.init ({
 
 $( document ).ready(function() {
 
-    $( '#form' ).on('submit', function( e ) {
+    $( '#button' ).click('click', function( e ) {
         e.preventDefault();
 
         var tagName = $( '#search' ).val();
@@ -53,4 +53,23 @@ $( document ).ready(function() {
 
     });
 
+    $( '#form' ).on('submit', function( e ) {
+        e.preventDefault();
+
+        var tagName = $( '#search' ).val();
+        Instagram.searchTags(tagName, function( response ) {
+            var $instagram = $( '#instagram' );
+                $instagram.html('');
+
+            for ( var i = 0; i < response.data.length; i++ ) {
+                tags = response.data[i].name;
+                mediaCount = response.data[i].media_count;
+                var instagramEndPoint = 'https://www.instagram.com/explore/tags/';
+                $instagram.append('<center><br><a href="'+ instagramEndPoint + tags + '" target="_blank">' + '#' + tags + '</a>');
+                $instagram.append('<center>' + mediaCount + " posts");
+            }
+
+        });
+
+    });
 });
