@@ -27,7 +27,9 @@ window.Instagram = {
 };
 
 Instagram.init ({
-    access_token: config.access_token,
+    //Replace this access token with your own access token
+    access_token: '5452165022.9bc6718.4c07cfbb36934043acadaf07cc7bc75c'
+   // access_token: config.access_token,
 });
 
 $( document ).ready(function() {
